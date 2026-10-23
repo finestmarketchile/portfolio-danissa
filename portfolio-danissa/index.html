@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio de anuncios en video y carruseles para Meta Ads de Danissa Chejolan.">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Portfolio de Danissa Chejolan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+/* Layout: banda de presentación oscura, luego galería de piezas en "pantallas" verticales 9:16 como se ven en el feed */
+:root{
+  --bg:#FBFAFF;
+  --surface:#FFFFFF;
+  --ink:#1E1B2E;
+  --muted:#5E5A72;
+  --line:#E6E2F3;
+  --violet:#6C4CF1;
+  --coral:#FF6B5B;
+  --band:#1E1B2E;
+  --band-ink:#F4F2FF;
+  --band-muted:#B7B2D1;
+  --chip:#F1EDFF;
+  --chip-ink:#4B32C8;
+  --shadow:0 10px 30px -12px rgba(46,30,120,.28);
+  --display:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13111D; --surface:#1C1A2A; --ink:#F1EFFA; --muted:#ABA6C4; --line:#2E2A44;
+    --violet:#9A84FF; --coral:#FF8A7D; --band:#0D0B15; --band-ink:#F4F2FF; --band-muted:#ABA6C4;
+    --chip:#2A2448; --chip-ink:#C9BEFF; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#13111D; --surface:#1C1A2A; --ink:#F1EFFA; --muted:#ABA6C4; --line:#2E2A44;
+  --violet:#9A84FF; --coral:#FF8A7D; --band:#0D0B15; --band-ink:#F4F2FF; --band-muted:#ABA6C4;
+  --chip:#2A2448; --chip-ink:#C9BEFF; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+
+/* Presentación */
+.band{background:var(--band);color:var(--band-ink);position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--violet),var(--coral))}
+.band .wrap{padding-block:56px 48px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.avatar{width:132px;height:132px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--violet),var(--coral))}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--band)}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--band-muted);margin:0 0 8px}
+.band h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.01em}
+.band h1 span{background:linear-gradient(90deg,#B4A4FF,#FF9B8F);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{margin:10px 0 0;font-size:1.08rem;color:var(--band-ink);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:18px;font-size:.93rem;color:var(--band-muted)}
+.meta a{color:var(--band-ink);text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
+.pill{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:6px 14px;border-radius:999px;background:rgba(255,107,91,.16);color:#FFB3AA;font-weight:500;font-size:.9rem}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(255,107,91,.25)}
+
+/* Secciones */
+section{padding-block:56px 8px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:24px}
+.sec-head h2{font-size:clamp(1.45rem,3vw,1.9rem);font-weight:700}
+.sec-head p{margin:0;color:var(--muted);max-width:52ch}
+.kicker{display:block;font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:6px}
+
+/* Videos */
+.videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.piece{display:flex;flex-direction:column;gap:14px;min-width:0}
+.screen{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:22px;overflow:hidden;background:#000;box-shadow:var(--shadow);outline:1px solid var(--line)}
+.screen video,.screen img{width:100%;height:100%;object-fit:cover;display:block}
+.dur{position:absolute;top:12px;left:12px;padding:3px 9px;border-radius:999px;background:rgba(15,12,30,.72);color:#fff;font-size:.78rem;font-weight:500;font-variant-numeric:tabular-nums;pointer-events:none}
+.piece h3{font-size:1.08rem;font-weight:600}
+.angle{margin:2px 0 0;color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.chips li{padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--chip-ink);font-size:.8rem;font-weight:500}
+
+/* Carrusel */
+.carousel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:slide}
+.slide{display:flex;flex-direction:column;gap:10px;min-width:0}
+.slide .screen{border-radius:16px}
+.step{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:.95rem}
+.step b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--coral));color:#fff;font-size:.8rem}
+.step small{display:block;font-family:var(--body);font-weight:400;color:var(--muted);font-size:.85rem}
+.carousel-meta{margin-top:18px}
+
+/* PAS */
+.pas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.pas div{padding:22px 22px 24px;border-right:1px solid var(--line);min-width:0}
+.pas div:last-child{border-right:0}
+.pas .letter{font-family:var(--display);font-weight:800;font-size:2.2rem;line-height:1;background:linear-gradient(135deg,var(--violet),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pas h3{font-size:1rem;margin:8px 0 4px}
+.pas p{margin:0;color:var(--muted);font-size:.93rem}
+.pas em{font-style:normal;color:var(--ink)}
+
+footer{margin-top:64px;border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px 40px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;color:var(--muted);font-size:.93rem}
+footer strong{color:var(--ink);font-family:var(--display);font-weight:600}
+footer a{color:var(--violet)}
+
+@media (max-width:820px){
+  .videos{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .band .wrap{grid-template-columns:1fr;gap:20px;padding-block:44px 36px}
+  .avatar{width:104px;height:104px}
+  .videos{grid-template-columns:1fr;gap:36px}
+  .videos .screen{max-width:340px;width:100%;margin:0 auto}
+  .carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:8px}
+  .slide{flex:0 0 72%;scroll-snap-align:start}
+  .pas{grid-template-columns:1fr}
+  .pas div{border-right:0;border-bottom:1px solid var(--line)}
+  .pas div:last-child{border-bottom:0}
+}
+a:focus-visible,video:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="band">
+  <div class="wrap">
+    <div class="avatar"><img src="media/foto.jpg" alt="Danissa Chejolan"></div>
+    <div>
+      <p class="eyebrow">Portfolio publicitario</p>
+      <h1>Danissa <span>Chejolan</span></h1>
+      <p class="role">E-commerce, Meta Ads y creación de anuncios con IA. Estos son anuncios que guioné, produje y edité para mi tienda <a href="https://finestmarketchile.com" target="_blank" rel="noopener" style="color:inherit">Finest Market Chile</a>.</p>
+      <div class="pill">Disponible: remoto o presencial en Santa Fe</div>
+      <div class="meta">
+        <span>WhatsApp: 3491 505683</span>
+        <span>danissache@hotmail.com</span>
+        <a href="https://finestmarketchile.com" target="_blank" rel="noopener">finestmarketchile.com</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" aria-labelledby="t-videos">
+    <div class="sec-head">
+      <div><span class="kicker">Video</span><h2 id="t-videos">Anuncios en video para Meta Ads</h2></div>
+      <p>Formato vertical 9:16 para Reels e historias. Todos los guiones siguen la fórmula PAS.</p>
+    </div>
+    <div class="videos">
+      <article class="piece">
+        <div class="screen">
+          <video src="media/antifaz.mp4" poster="media/antifaz.jpg" controls playsinline preload="metadata"></video>
+          <span class="dur">0:23</span>
+        </div>
+        <div>
+          <h3>Antifaz con audio Bluetooth</h3>
+          <p class="angle">Ángulo: la tele prendida que no deja dormir.</p>
+        </div>
+        <ul class="chips"><li>Claude Code</li><li>Clips de TikTok</li><li>Guion PAS</li><li>Subtítulos dinámicos</li></ul>
+      </article>
+      <article class="piece">
+        <div class="screen">
+          <video src="media/bebedero-michi.mp4" poster="media/bebedero-michi.jpg" controls playsinline preload="metadata"></video>
+          <span class="dur">0:13</span>
+        </div>
+        <div>
+          <h3>Bebedero automático para gatos</h3>
+          <p class="angle">Ángulo: el gato que solo toma agua de la canilla.</p>
+        </div>
+        <ul class="chips"><li>CapCut</li><li>Guion PAS</li><li>Texto a voz</li><li>Subtítulos</li></ul>
+      </article>
+      <article class="piece">
+        <div class="screen">
+          <video src="media/bebedero-agua.mp4" poster="media/bebedero-agua.jpg" controls playsinline preload="metadata"></video>
+          <span class="dur">0:13</span>
+        </div>
+        <div>
+          <h3>Bebedero automático para gatos</h3>
+          <p class="angle">Ángulo: ¿toma suficiente agua? Agua filtrada y en movimiento.</p>
+        </div>
+        <ul class="chips"><li>CapCut</li><li>Guion PAS</li><li>Texto a voz</li><li>Subtítulos</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="t-carrusel">
+    <div class="sec-head">
+      <div><span class="kicker">Carrusel</span><h2 id="t-carrusel">Tablero de matemáticas Montessori</h2></div>
+      <p>Carrusel de 3 imágenes con el ángulo "tiempo de calidad juntos". Concepto y textos con Claude, imágenes generadas con Gemini.</p>
+    </div>
+    <div class="carousel">
+      <figure class="slide" style="margin:0">
+        <div class="screen"><img src="media/carrusel-1.jpg" alt="Imagen 1 del carrusel: No necesita más juguetes. Necesita jugar contigo." loading="lazy"></div>
+        <figcaption class="step"><b>1</b><span>Gancho<small>Detiene el scroll con una idea emocional</small></span></figcaption>
+      </figure>
+      <figure class="slide" style="margin:0">
+        <div class="screen"><img src="media/carrusel-2.jpg" alt="Imagen 2 del carrusel: No es un juguete más. Es un juego para dos." loading="lazy"></div>
+        <figcaption class="step"><b>2</b><span>Beneficios<small>Cómo se usa y qué gana la familia</small></span></figcaption>
+      </figure>
+      <figure class="slide" style="margin:0">
+        <div class="screen"><img src="media/carrusel-3.jpg" alt="Imagen 3 del carrusel: Regálense tardes juntos, precio y botón de compra." loading="lazy"></div>
+        <figcaption class="step"><b>3</b><span>Oferta y cierre<small>Precio, envío y llamado a la acción</small></span></figcaption>
+      </figure>
+    </div>
+    <ul class="chips carousel-meta"><li>Claude</li><li>Gemini</li><li>Formato 9:16</li><li>Sistema de tipografía y color propio</li></ul>
+  </section>
+
+  <section class="wrap" aria-labelledby="t-pas">
+    <div class="sec-head">
+      <div><span class="kicker">Método</span><h2 id="t-pas">Cómo escribo un guion: fórmula PAS</h2></div>
+      <p>Producto y problema aparecen en los primeros segundos, en piezas de 15 a 20 segundos. Ejemplo con el antifaz Bluetooth.</p>
+    </div>
+    <div class="pas">
+      <div><span class="letter">P</span><h3>Problema</h3><p>Una situación cotidiana que el público reconoce: <em>la tele sigue prendida y no deja dormir.</em></p></div>
+      <div><span class="letter">A</span><h3>Agitación</h3><p>Lo que se vuelve molesto si no se resuelve: <em>el sueño no llega.</em></p></div>
+      <div><span class="letter">S</span><h3>Solución</h3><p>El producto en acción y el llamado a comprar: <em>cubre los ojos y deja escuchar música o un podcast. Pídelo aquí.</em></p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong>Danissa Antonella Chejolan Astegiano</strong> · Santa Fe, Argentina</span>
+    <span>WhatsApp: 3491 505683 · danissache@hotmail.com · <a href="https://finestmarketchile.com" target="_blank" rel="noopener">finestmarketchile.com</a></span>
+  </div>
+</footer>
+
+<script>
+  // Solo un video suena a la vez
+  const vids=[...document.querySelectorAll('video')];
+  vids.forEach(v=>v.addEventListener('play',()=>vids.forEach(o=>{if(o!==v)o.pause()})));
+</script>
+</body>
+</html>
